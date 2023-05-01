@@ -27,7 +27,6 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getCurrentLocation();
   }
@@ -176,7 +175,7 @@ class HomeScreenState extends State<HomeScreen> {
                         width: 10,
                       ),
                       Text(
-                        'Pressure: ${pressure} hpa',
+                        'Pressure: $pressure hpa',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w600),
                       ),
@@ -207,7 +206,7 @@ class HomeScreenState extends State<HomeScreen> {
                         width: 10,
                       ),
                       Text(
-                        'Humidity: ${humidity}%',
+                        'Humidity: $humidity%',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w600),
                       ),
@@ -241,7 +240,7 @@ class HomeScreenState extends State<HomeScreen> {
                         width: 10,
                       ),
                       Text(
-                        'Cloud Cover: ${cover}%',
+                        'Cloud Cover: $cover%',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w600),
                       ),
@@ -263,7 +262,7 @@ class HomeScreenState extends State<HomeScreen> {
 
     // ignore: unnecessary_null_comparison
     if (p != null) {
-      print('Lat: ${p.latitude}, Long: ${p.longitude}');
+      // print('Lat: ${p.latitude}, Long: ${p.longitude}');
       getCurrentCityWeather(p);
     } else {
       ("Data unavailable");
@@ -272,7 +271,7 @@ class HomeScreenState extends State<HomeScreen> {
 
   getCityWeather(String city) async {
     var client = http.Client();
-    var uri = '${link}q=$city&appid=${api}';
+    var uri = '${link}q=$city&appid=$api';
     // var uri for vellore = 'https://api.openweathermap.org/data/2.5/weather?lat=12.97&lon=79.16&appid=7fc14329c3d424c38e3a26b97321f443';
     var url = Uri.parse(uri);
     var response = await client.get(url);
@@ -285,6 +284,7 @@ class HomeScreenState extends State<HomeScreen> {
         isLoaded = true;
       });
     } else {
+      // ignore: avoid_print
       print(response.statusCode);
     }
   }
@@ -292,7 +292,7 @@ class HomeScreenState extends State<HomeScreen> {
   getCurrentCityWeather(Position position) async {
     var client = http.Client();
     var uri =
-        '${link}lat=${position.latitude}&lon=${position.longitude}&appid=${api}';
+        '${link}lat=${position.latitude}&lon=${position.longitude}&appid=$api';
 
     //vellore
     // var uri = 'https://api.openweathermap.org/data/2.5/weather?lat=12.97&lon=79.16&appid=7fc14329c3d424c38e3a26b97321f443';
@@ -302,12 +302,13 @@ class HomeScreenState extends State<HomeScreen> {
     if (response.statusCode == 200) {
       var data = response.body;
       var decodedData = json.decode(data);
-      print(data);
+      //print(data);
       updateUI(decodedData);
       setState(() {
         isLoaded = true;
       });
     } else {
+      // ignore: avoid_print
       print(response.statusCode);
     }
   }
