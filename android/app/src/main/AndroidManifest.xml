@@ -2,7 +2,7 @@
     package="com.example.weatherapp">
    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="weatherapp"
+        android:label="Weather"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -33,6 +33,7 @@
             android:value="2" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     
 </manifest>
