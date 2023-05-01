@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
-
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -41,9 +40,12 @@ class HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xff0093E9), Color(0xff80D0C7)],
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
+              colors: [
+                Color(0xFF002647),
+                Color(0xFF4fc7fd),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
           child: Visibility(
@@ -60,7 +62,7 @@ class HomeScreenState extends State<HomeScreen> {
                     horizontal: 10,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.white.withOpacity(0.5),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Center(
@@ -74,16 +76,15 @@ class HomeScreenState extends State<HomeScreen> {
                       },
                       controller: controller,
                       cursorColor: Colors.white,
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 24, color: Colors.white),
                       decoration: InputDecoration(
-                        hintText: 'Search city',
+                        hintText: 'Search',
+                        hintStyle:
+                            TextStyle(color: Colors.white.withOpacity(0.6)),
                         prefixIcon: Icon(
                           Icons.search_rounded,
                           size: 30,
-                          color: Colors.white.withOpacity(.5),
+                          color: Colors.white,
                         ),
                         border: InputBorder.none,
                       ),
@@ -96,11 +97,12 @@ class HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(
                         Icons.pin_drop_outlined,
-                        color: Color(0xff8B0000),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         size: 40,
                       ),
                       Text(
@@ -108,6 +110,8 @@ class HomeScreenState extends State<HomeScreen> {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 29,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
                       )
                     ],
@@ -255,7 +259,7 @@ class HomeScreenState extends State<HomeScreen> {
 
   getCurrentLocation() async {
     var p = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low,
+        desiredAccuracy: LocationAccuracy.high,
         forceAndroidLocationManager: true);
 
     if (p != null) {

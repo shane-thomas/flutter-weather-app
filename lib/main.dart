@@ -5,7 +5,9 @@ import 'homescreen.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: HomeScreen(),
-    debugShowCheckedModeBanner: false,
-  ));
+      home: HomeScreen(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.white,
+      )));
 }
