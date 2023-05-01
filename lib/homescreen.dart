@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -41,7 +41,6 @@ class HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              // ignore: prefer_const_literals_to_create_immutables
               colors: [Color(0xff0093E9), Color(0xff80D0C7)],
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
@@ -78,7 +77,6 @@ class HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
-                        // fontWeight: FontWeight.w600,
                       ),
                       decoration: InputDecoration(
                         hintText: 'Search city',
@@ -260,7 +258,6 @@ class HomeScreenState extends State<HomeScreen> {
         desiredAccuracy: LocationAccuracy.low,
         forceAndroidLocationManager: true);
 
-    // ignore: unnecessary_null_comparison
     if (p != null) {
       // print('Lat: ${p.latitude}, Long: ${p.longitude}');
       getCurrentCityWeather(p);
@@ -284,7 +281,6 @@ class HomeScreenState extends State<HomeScreen> {
         isLoaded = true;
       });
     } else {
-      // ignore: avoid_print
       print(response.statusCode);
     }
   }
@@ -294,8 +290,7 @@ class HomeScreenState extends State<HomeScreen> {
     var uri =
         '${link}lat=${position.latitude}&lon=${position.longitude}&appid=$api';
 
-    //vellore
-    // var uri = 'https://api.openweathermap.org/data/2.5/weather?lat=12.97&lon=79.16&appid=7fc14329c3d424c38e3a26b97321f443';
+    // var uri for vellore = 'https://api.openweathermap.org/data/2.5/weather?lat=12.97&lon=79.16&appid=7fc14329c3d424c38e3a26b97321f443';
 
     var url = Uri.parse(uri);
     var response = await client.get(url);
@@ -308,7 +303,6 @@ class HomeScreenState extends State<HomeScreen> {
         isLoaded = true;
       });
     } else {
-      // ignore: avoid_print
       print(response.statusCode);
     }
   }
