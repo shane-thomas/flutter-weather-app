@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -262,6 +262,7 @@ class HomeScreenState extends State<HomeScreen> {
         desiredAccuracy: LocationAccuracy.high,
         forceAndroidLocationManager: true);
 
+    // ignore: unnecessary_null_comparison
     if (p != null) {
       // print('Lat: ${p.latitude}, Long: ${p.longitude}');
       getCurrentCityWeather(p);
