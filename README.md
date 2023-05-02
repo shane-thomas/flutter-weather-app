@@ -1,6 +1,6 @@
 # weatherapp
 
-A Flutter project.
+A Flutter project wherein you can check the current location's weather and see the temperature, humidity, pressure and cloud cover in it. The same can be done for any city that you type in across the world. This was made possible using the openweather API. 
 
 ## Getting Started
 
